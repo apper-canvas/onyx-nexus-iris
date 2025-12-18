@@ -70,8 +70,8 @@ const Settings = () => {
   };
 
   return (
-<div className="p-6">
-      <div className="max-w-7xl mx-auto">
+<div className="p-4 sm:p-6 lg:p-8">
+      <div className="max-w-7xl mx-auto space-y-8">
         {/* Header */}
         <div className="mb-8">
           <h1 className="text-2xl font-bold text-slate-900">Settings</h1>
@@ -108,7 +108,7 @@ const Settings = () => {
               <div className="bg-white rounded-lg border border-slate-200 p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">System Preferences</h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label className="block text-sm font-medium text-slate-700 mb-2">
                       Timezone
@@ -180,7 +180,7 @@ const Settings = () => {
               <div className="bg-white rounded-lg border border-slate-200 p-6">
                 <h3 className="text-lg font-semibold text-slate-900 mb-4">Company Information</h3>
                 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="md:col-span-2">
                     <label className="block text-sm font-medium text-slate-700 mb-2">
                       Company Name
