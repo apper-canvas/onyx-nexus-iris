@@ -20,7 +20,7 @@ return (
               <ApperIcon name="Menu" size={24} className="text-slate-700" />
             </button>
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center">
+<div className="w-8 h-8 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center">
                 <ApperIcon name="Network" className="w-5 h-5 text-white" />
               </div>
               <span className="font-bold text-slate-900">Nexus CRM</span>
@@ -29,7 +29,7 @@ return (
           </div>
         </header>
 
-<main className="flex-1 bg-slate-50 p-6 overflow-auto">
+<main className="flex-1 bg-orange-50 p-6 overflow-auto">
           <div className="w-full max-w-7xl mx-auto">
             <Outlet />
           </div>

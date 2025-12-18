@@ -127,7 +127,7 @@ const Dashboard = () => {
             className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-lg transition-all duration-200 cursor-pointer group"
           >
             <div className="flex items-center justify-between mb-4">
-              <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+<div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
                 <ApperIcon name={metric.icon} className="w-6 h-6 text-white" />
               </div>
               <span className={`text-sm font-medium flex items-center gap-1 ${
@@ -196,7 +196,7 @@ const Dashboard = () => {
                   <ApperIcon name={activity.icon} size={14} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-slate-900 group-hover:text-primary transition-colors">
+<p className="text-sm font-medium text-slate-900 group-hover:text-primary transition-colors">
                     {activity.title}
                   </p>
                   <p className="text-xs text-slate-500 mt-1">

@@ -86,7 +86,7 @@ const Settings = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
                 activeTab === tab.id
-                  ? "border-primary text-primary"
+? "border-primary text-primary"
                   : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
               }`}
             >
@@ -111,7 +111,7 @@ const Settings = () => {
                   <select
                     value={settings.system.timezone}
                     onChange={(e) => handleInputChange("system", "timezone", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     {timezones.map((tz) => (
                       <option key={tz} value={tz}>{tz}</option>
@@ -126,7 +126,7 @@ const Settings = () => {
                   <select
                     value={settings.system.currency}
                     onChange={(e) => handleInputChange("system", "currency", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     {currencies.map((currency) => (
                       <option key={currency.code} value={currency.code}>
@@ -143,7 +143,7 @@ const Settings = () => {
                   <select
                     value={settings.system.dateFormat}
                     onChange={(e) => handleInputChange("system", "dateFormat", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     <option value="MM/DD/YYYY">MM/DD/YYYY</option>
                     <option value="DD/MM/YYYY">DD/MM/YYYY</option>
@@ -158,7 +158,7 @@ const Settings = () => {
                   <select
                     value={settings.system.timeFormat}
                     onChange={(e) => handleInputChange("system", "timeFormat", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   >
                     <option value="12-hour">12-hour</option>
                     <option value="24-hour">24-hour</option>
@@ -183,7 +183,7 @@ const Settings = () => {
                     type="text"
                     value={settings.company.name}
                     onChange={(e) => handleInputChange("company", "name", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ const Settings = () => {
                     type="email"
                     value={settings.company.email}
                     onChange={(e) => handleInputChange("company", "email", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 
@@ -207,7 +207,7 @@ const Settings = () => {
                     type="text"
                     value={settings.company.phone}
                     onChange={(e) => handleInputChange("company", "phone", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 
@@ -219,7 +219,7 @@ const Settings = () => {
                     type="text"
                     value={settings.company.address}
                     onChange={(e) => handleInputChange("company", "address", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 
@@ -231,7 +231,7 @@ const Settings = () => {
                     type="text"
                     value={settings.company.city}
                     onChange={(e) => handleInputChange("company", "city", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
 
@@ -243,7 +243,7 @@ const Settings = () => {
                     type="url"
                     value={settings.company.website}
                     onChange={(e) => handleInputChange("company", "website", e.target.value)}
-                    className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                   />
                 </div>
               </div>

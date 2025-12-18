@@ -97,22 +97,22 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
       {(filters.owner || filters.leadStatus.length > 0) && (
         <div className="flex flex-wrap items-center gap-2">
           {filters.owner && (
-            <Badge variant="primary" className="text-xs px-3 py-1">
+<Badge variant="primary" className="text-xs px-3 py-1">
               Owner: {filters.owner}
               <button
                 onClick={() => onFilterChange("owner", "")}
-                className="ml-2 hover:text-primary-dark"
+className="ml-2 hover:text-primary-dark"
               >
                 <ApperIcon name="X" size={12} />
               </button>
             </Badge>
           )}
           {filters.leadStatus.map((status) => (
-            <Badge key={status} variant="primary" className="text-xs px-3 py-1">
+<Badge key={status} variant="primary" className="text-xs px-3 py-1">
               Status: {status}
               <button
                 onClick={() => onFilterChange("leadStatus", filters.leadStatus.filter(s => s !== status))}
-                className="ml-2 hover:text-primary-dark"
+className="ml-2 hover:text-primary-dark"
               >
                 <ApperIcon name="X" size={12} />
               </button>

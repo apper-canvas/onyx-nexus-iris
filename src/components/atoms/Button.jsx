@@ -11,7 +11,7 @@ const Button = forwardRef(({
 }, ref) => {
   const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
   
-  const variants = {
+const variants = {
     primary: "bg-gradient-to-r from-primary to-primary-light text-white hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
     secondary: "border-2 border-primary text-primary hover:bg-primary hover:text-white",
     ghost: "text-slate-700 hover:bg-slate-100 active:bg-slate-200",

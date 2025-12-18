@@ -8,16 +8,16 @@ export default {
     extend: {
 colors: {
         primary: {
-          DEFAULT: "#1e293b",
-          light: "#334155",
-          dark: "#0f172a"
+          DEFAULT: "#ea580c",
+          light: "#fb923c",
+          dark: "#c2410c"
         },
         secondary: {
-          DEFAULT: "#0d9488",
-          light: "#14b8a6",
-          dark: "#0f766e"
+          DEFAULT: "#f97316",
+          light: "#fb923c",
+          dark: "#ea580c"
         },
-        accent: "#5eead4"
+        accent: "#fed7aa"
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"]

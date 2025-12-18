@@ -27,7 +27,7 @@ const Pagination = ({
         <select
           value={perPage}
           onChange={(e) => onPerPageChange(Number(e.target.value))}
-          className="px-3 py-1.5 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+className="px-3 py-1.5 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
         >
           <option value={10}>10 per page</option>
           <option value={25}>25 per page</option>
@@ -57,7 +57,7 @@ const Pagination = ({
             className={cn(
               "px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200",
               page === currentPage
-                ? "bg-gradient-to-r from-primary to-primary-light text-white shadow-md"
+? "bg-gradient-to-r from-primary to-primary-light text-white shadow-md"
                 : "text-slate-600 hover:bg-slate-100"
             )}
           >
