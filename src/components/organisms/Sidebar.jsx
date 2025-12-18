@@ -62,8 +62,8 @@ const Sidebar = ({ isOpen, onClose }) => {
         </nav>
       </aside>
 
-      {/* Sidebar - Desktop (Static) */}
-      <aside className="hidden lg:block w-60 bg-gradient-to-b from-primary to-primary-dark min-h-screen">
+{/* Sidebar - Desktop (Fixed) */}
+      <aside className="hidden lg:block fixed top-0 left-0 w-60 bg-gradient-to-b from-primary to-primary-dark min-h-screen z-40">
         <div className="p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
