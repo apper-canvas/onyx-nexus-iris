@@ -6,11 +6,11 @@ import ApperIcon from "@/components/ApperIcon";
 const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  return (
-<div className="flex min-h-screen">
+return (
+    <div className="flex h-screen overflow-hidden">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       
-      <div className="flex-1 lg:ml-60">
+      <div className="flex-1 lg:ml-60 flex flex-col">
         {/* Mobile Header */}
         <header className="lg:hidden bg-white border-b border-slate-200 px-4 py-3 sticky top-0 z-30">
           <div className="flex items-center justify-between">
@@ -30,7 +30,7 @@ const Layout = () => {
           </div>
         </header>
 
-<main className="min-h-screen bg-slate-50 p-4 sm:p-6 lg:p-6 overflow-x-auto">
+        <main className="flex-1 bg-slate-50 p-4 sm:p-6 lg:p-6 overflow-auto">
           <div className="w-full max-w-7xl mx-auto">
             <Outlet />
           </div>
