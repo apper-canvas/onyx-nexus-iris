@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import contactService from "@/services/api/contactService";
 import ApperIcon from "@/components/ApperIcon";
@@ -11,6 +11,7 @@ import Pagination from "@/components/organisms/Pagination";
 import Loading from "@/components/ui/Loading";
 import ErrorView from "@/components/ui/ErrorView";
 import Empty from "@/components/ui/Empty";
+import Dropdown from "@/components/molecules/Dropdown";
 
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
@@ -20,9 +21,20 @@ const Contacts = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeTab, setActiveTab] = useState("all");
   const [viewMode, setViewMode] = useState("table");
-  const [selectedContacts, setSelectedContacts] = useState([]);
+const [selectedContacts, setSelectedContacts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage, setPerPage] = useState(25);
+  const [showBulkActions, setShowBulkActions] = useState(false);
+  const [bulkAction, setBulkAction] = useState("");
+  const [showImportModal, setShowImportModal] = useState(false);
+  
+  const bulkActions = [
+    { value: "assign_owner", label: "Assign Owner", icon: "UserPlus" },
+    { value: "change_status", label: "Change Status", icon: "Target" },
+    { value: "add_tags", label: "Add Tags", icon: "Tag" },
+    { value: "export", label: "Export Selected", icon: "Download" },
+    { value: "delete", label: "Delete", icon: "Trash2", danger: true }
+  ];
 
   const [filters, setFilters] = useState({
     owner: "",
@@ -86,6 +98,71 @@ const Contacts = () => {
       }
     }
   };
+// Bulk action handlers
+  const handleBulkAction = async (action) => {
+    if (selectedContacts.length === 0) return;
+
+    try {
+      switch (action) {
+        case 'assign_owner':
+          const owner = prompt('Enter owner name:');
+          if (owner) {
+            await contactService.assignOwner(selectedContacts, owner);
+            showToast(`Assigned ${selectedContacts.length} contacts to ${owner}`);
+            fetchContacts();
+          }
+          break;
+          
+        case 'change_status':
+          const status = prompt('Enter new status (New Lead, Qualified, Customer, Unqualified):');
+          if (status) {
+            await contactService.changeStatus(selectedContacts, status);
+            showToast(`Updated status for ${selectedContacts.length} contacts`);
+            fetchContacts();
+          }
+          break;
+          
+        case 'add_tags':
+          const tags = prompt('Enter tags (comma-separated):');
+          if (tags) {
+            const tagArray = tags.split(',').map(t => t.trim());
+            await contactService.addTags(selectedContacts, tagArray);
+            showToast(`Added tags to ${selectedContacts.length} contacts`);
+            fetchContacts();
+          }
+          break;
+          
+        case 'export':
+          const exportData = await contactService.exportContacts(selectedContacts);
+          downloadFile(exportData.filename, exportData.content, exportData.contentType);
+          showToast(`Exported ${selectedContacts.length} contacts`);
+          break;
+          
+        case 'delete':
+          if (confirm(`Delete ${selectedContacts.length} contacts? This cannot be undone.`)) {
+            await contactService.bulkDelete(selectedContacts);
+            showToast(`Deleted ${selectedContacts.length} contacts`);
+            fetchContacts();
+          }
+          break;
+      }
+      setSelectedContacts([]);
+    } catch (error) {
+      showToast(error.message, 'error');
+    }
+  };
+
+  const downloadFile = (filename, content, contentType) => {
+    const blob = new Blob([content], { type: contentType });
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.URL.revokeObjectURL(url);
+  };
 
   // Filter contacts based on search and filters
   let filteredContacts = contacts.filter(contact => {
@@ -93,7 +170,7 @@ const Contacts = () => {
     if (searchQuery) {
       const query = searchQuery.toLowerCase();
       const matchesSearch = 
-        contact.name.toLowerCase().includes(query) ||
+contact.name.toLowerCase().includes(query) ||
         contact.email.toLowerCase().includes(query) ||
         contact.company.toLowerCase().includes(query) ||
         contact.phone.includes(query);
@@ -166,9 +243,174 @@ const Contacts = () => {
               </p>
             </div>
             <Button>
-              <ApperIcon name="Plus" size={18} className="mr-2" />
+<ApperIcon name="Plus" size={18} className="mr-2" />
               Add Contact
             </Button>
+            <Button
+              variant="secondary"
+              onClick={() => setShowImportModal(true)}
+            >
+              <ApperIcon name="Upload" size={18} className="mr-2" />
+              Import CSV
+            </Button>
+          </div>
+
+          {/* Bulk Actions Bar */}
+          {selectedContacts.length > 0 && (
+            <div className="bg-primary text-white px-4 py-3 rounded-lg flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <span className="text-sm font-medium">
+                  {selectedContacts.length} contact{selectedContacts.length !== 1 ? 's' : ''} selected
+                </span>
+                <div className="h-4 w-px bg-white/30"></div>
+                <Dropdown
+                  trigger={
+                    <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
+                      <ApperIcon name="Settings" size={16} className="mr-2" />
+                      Bulk Actions
+                      <ApperIcon name="ChevronDown" size={16} className="ml-2" />
+                    </Button>
+                  }
+                >
+                  {bulkActions.map((action) => (
+                    <Dropdown.Item
+                      key={action.value}
+                      onClick={() => handleBulkAction(action.value)}
+                      className={action.danger ? "text-red-600 hover:bg-red-50" : ""}
+                    >
+                      <ApperIcon name={action.icon} size={16} />
+                      {action.label}
+                    </Dropdown.Item>
+                  ))}
+                </Dropdown>
+              </div>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setSelectedContacts([])}
+                className="text-white hover:bg-white/10"
+              >
+                <ApperIcon name="X" size={16} />
+              </Button>
+            </div>
+          )}
+        </div>
+
+        {/* Import CSV Modal */}
+        {showImportModal && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+            <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+              <div className="flex items-center justify-between mb-4">
+                <h3 className="text-lg font-semibold text-slate-900">Import Contacts</h3>
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => setShowImportModal(false)}
+                >
+                  <ApperIcon name="X" size={16} />
+                </Button>
+              </div>
+              
+              <div className="space-y-4">
+                <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center">
+                  <ApperIcon name="Upload" className="w-12 h-12 text-slate-400 mx-auto mb-3" />
+                  <p className="text-sm text-slate-600 mb-2">
+                    Drop your CSV file here or click to browse
+                  </p>
+                  <Button variant="secondary" size="sm">
+                    Choose File
+                  </Button>
+                </div>
+                
+                <div className="text-xs text-slate-500">
+                  <p className="font-medium mb-1">Supported fields:</p>
+                  <p>Name, Email, Phone, Company, Lead Status, Topics</p>
+                </div>
+                
+                <div className="flex justify-end gap-2">
+                  <Button
+                    variant="ghost"
+                    onClick={() => setShowImportModal(false)}
+                  >
+                    Cancel
+                  </Button>
+                  <Button>
+                    Import Contacts
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
+          <div className="px-6 py-4 border-b border-slate-200">
+            <div className="flex items-center gap-4">
+              <SearchBar
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder="Search contacts..."
+                className="flex-1"
+              />
+              <FilterBar
+                filters={filters}
+                onFilterChange={handleFilterChange}
+                onClearFilters={handleClearFilters}
+              />
+            </div>
+          </div>
+        </div>
+
+        <ContactsTable
+          contacts={paginatedContacts}
+          selectedContacts={selectedContacts}
+          onSelectContact={handleSelectContact}
+          onSelectAll={handleSelectAll}
+        />
+
+        <div className="bg-white rounded-lg border border-slate-200 p-4">
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            perPage={perPage}
+            totalItems={filteredContacts.length}
+            onPageChange={setCurrentPage}
+            onPerPageChange={setPerPage}
+          />
+        </div>
+
+        {/* Action Bar Footer */}
+        <div className="bg-white rounded-lg border border-slate-200 p-4">
+          <div className="flex items-center justify-between">
+            <span className="text-sm text-slate-600">
+              Showing {((currentPage - 1) * perPage) + 1} to {Math.min(currentPage * perPage, filteredContacts.length)} of {filteredContacts.length} contacts
+            </span>
+            <div className="flex items-center gap-2">
+              <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
+                <ApperIcon name="Mail" size={16} className="mr-2" />
+                Email
+              </Button>
+              <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
+                <ApperIcon name="Download" size={16} className="mr-2" />
+                Export
+              </Button>
+              <Dropdown
+                trigger={
+                  <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
+                    <ApperIcon name="MoreHorizontal" size={16} />
+                  </Button>
+                }
+              >
+                <Dropdown.Item>
+                  <ApperIcon name="Printer" size={16} />
+                  Print List
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <ApperIcon name="Share" size={16} />
+                  Share
+                </Dropdown.Item>
+              </Dropdown>
+            </div>
           </div>
 
           {/* Toolbar */}
