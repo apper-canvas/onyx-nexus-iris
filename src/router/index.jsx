@@ -11,7 +11,7 @@ const Settings = lazy(() => import("@/components/pages/Settings"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-slate-100">
+  <div className="min-h-screen flex items-center justify-center bg-slate-50">
     <div className="text-center space-y-4">
       <div className="relative w-16 h-16 mx-auto">
         <div className="absolute inset-0 border-4 border-primary/20 rounded-full"></div>

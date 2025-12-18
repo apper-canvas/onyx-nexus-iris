@@ -7,7 +7,7 @@ const Layout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <div className="flex min-h-screen bg-slate-50">
+<div className="flex min-h-screen">
       <Sidebar isOpen={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       
       <div className="flex-1 lg:ml-60">
@@ -30,7 +30,7 @@ const Layout = () => {
           </div>
         </header>
 
-<main className="min-h-screen p-4 sm:p-6 lg:p-6 overflow-x-auto">
+<main className="min-h-screen bg-slate-50 p-4 sm:p-6 lg:p-6 overflow-x-auto">
           <div className="w-full max-w-7xl mx-auto">
             <Outlet />
           </div>

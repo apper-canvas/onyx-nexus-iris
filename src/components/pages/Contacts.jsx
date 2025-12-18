@@ -231,7 +231,7 @@ contact.name.toLowerCase().includes(query) ||
   if (error) return <ErrorView message={error} onRetry={loadContacts} />;
 
   return (
-    <div className="min-h-screen bg-slate-50">
+<div>
       {/* Header */}
       <div className="bg-white border-b border-slate-200">
         <div className="px-6 py-6">
