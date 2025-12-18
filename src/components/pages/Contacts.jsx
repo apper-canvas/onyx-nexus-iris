@@ -231,192 +231,75 @@ contact.name.toLowerCase().includes(query) ||
   if (error) return <ErrorView message={error} onRetry={loadContacts} />;
 
   return (
-<div>
-      {/* Header */}
-      <div className="bg-white border-b border-slate-200">
-        <div className="px-6 py-6">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="text-2xl font-bold text-slate-900">Contacts</h1>
-              <p className="text-sm text-slate-600 mt-1">
-                Manage and organize your business contacts
-              </p>
-            </div>
-            <Button>
-<ApperIcon name="Plus" size={18} className="mr-2" />
-              Add Contact
-            </Button>
-            <Button
-              variant="secondary"
-              onClick={() => setShowImportModal(true)}
-            >
-              <ApperIcon name="Upload" size={18} className="mr-2" />
-              Import CSV
-            </Button>
-          </div>
-
-          {/* Bulk Actions Bar */}
-          {selectedContacts.length > 0 && (
-            <div className="bg-primary text-white px-4 py-3 rounded-lg flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <span className="text-sm font-medium">
-                  {selectedContacts.length} contact{selectedContacts.length !== 1 ? 's' : ''} selected
-                </span>
-                <div className="h-4 w-px bg-white/30"></div>
-                <Dropdown
-                  trigger={
-                    <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
-                      <ApperIcon name="Settings" size={16} className="mr-2" />
-                      Bulk Actions
-                      <ApperIcon name="ChevronDown" size={16} className="ml-2" />
-                    </Button>
-                  }
-                >
-                  {bulkActions.map((action) => (
-                    <Dropdown.Item
-                      key={action.value}
-                      onClick={() => handleBulkAction(action.value)}
-                      className={action.danger ? "text-red-600 hover:bg-red-50" : ""}
-                    >
-                      <ApperIcon name={action.icon} size={16} />
-                      {action.label}
-                    </Dropdown.Item>
-                  ))}
-                </Dropdown>
-              </div>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={() => setSelectedContacts([])}
-                className="text-white hover:bg-white/10"
-              >
-                <ApperIcon name="X" size={16} />
-              </Button>
-            </div>
-          )}
+<div className="space-y-6">
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-2xl font-bold text-slate-900">Contacts</h1>
+          <p className="text-sm text-slate-600 mt-1">
+            Manage and organize your business contacts
+          </p>
         </div>
-
-        {/* Import CSV Modal */}
-        {showImportModal && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-            <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold text-slate-900">Import Contacts</h3>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => setShowImportModal(false)}
-                >
-                  <ApperIcon name="X" size={16} />
-                </Button>
-              </div>
-              
-              <div className="space-y-4">
-                <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center">
-                  <ApperIcon name="Upload" className="w-12 h-12 text-slate-400 mx-auto mb-3" />
-                  <p className="text-sm text-slate-600 mb-2">
-                    Drop your CSV file here or click to browse
-                  </p>
-                  <Button variant="secondary" size="sm">
-                    Choose File
-                  </Button>
-                </div>
-                
-                <div className="text-xs text-slate-500">
-                  <p className="font-medium mb-1">Supported fields:</p>
-                  <p>Name, Email, Phone, Company, Lead Status, Topics</p>
-                </div>
-                
-                <div className="flex justify-end gap-2">
-                  <Button
-                    variant="ghost"
-                    onClick={() => setShowImportModal(false)}
-                  >
-                    Cancel
-                  </Button>
-                  <Button>
-                    Import Contacts
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
-        <div className="bg-white rounded-lg border border-slate-200 overflow-hidden">
-          <div className="px-6 py-4 border-b border-slate-200">
-            <div className="flex items-center gap-4">
-              <SearchBar
-                value={searchQuery}
-                onChange={setSearchQuery}
-                placeholder="Search contacts..."
-                className="flex-1"
-              />
-              <FilterBar
-                filters={filters}
-                onFilterChange={handleFilterChange}
-                onClearFilters={handleClearFilters}
-              />
-            </div>
-          </div>
+        <div className="flex items-center gap-3">
+          <Button onClick={() => setShowImportModal(true)} variant="secondary">
+            <ApperIcon name="Upload" size={18} className="mr-2" />
+            Import CSV
+          </Button>
+          <Button>
+            <ApperIcon name="Plus" size={18} className="mr-2" />
+            Add Contact
+          </Button>
         </div>
+      </div>
 
-        <ContactsTable
-          contacts={paginatedContacts}
-          selectedContacts={selectedContacts}
-          onSelectContact={handleSelectContact}
-          onSelectAll={handleSelectAll}
-        />
-
-        <div className="bg-white rounded-lg border border-slate-200 p-4">
-          <Pagination
-            currentPage={currentPage}
-            totalPages={totalPages}
-            perPage={perPage}
-            totalItems={filteredContacts.length}
-            onPageChange={setCurrentPage}
-            onPerPageChange={setPerPage}
-          />
-        </div>
-
-        {/* Action Bar Footer */}
-        <div className="bg-white rounded-lg border border-slate-200 p-4">
-          <div className="flex items-center justify-between">
-            <span className="text-sm text-slate-600">
-              Showing {((currentPage - 1) * perPage) + 1} to {Math.min(currentPage * perPage, filteredContacts.length)} of {filteredContacts.length} contacts
+      {selectedContacts.length > 0 && (
+        <div className="bg-primary text-white px-6 py-3 rounded-lg flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <span className="text-sm font-medium">
+              {selectedContacts.length} contact{selectedContacts.length !== 1 ? 's' : ''} selected
             </span>
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
-                <ApperIcon name="Mail" size={16} className="mr-2" />
-                Email
-              </Button>
-              <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
-                <ApperIcon name="Download" size={16} className="mr-2" />
-                Export
-              </Button>
-              <Dropdown
-                trigger={
-                  <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
-                    <ApperIcon name="MoreHorizontal" size={16} />
-                  </Button>
-                }
-              >
-                <Dropdown.Item>
-                  <ApperIcon name="Printer" size={16} />
-                  Print List
+            <div className="h-4 w-px bg-white/30"></div>
+            <Dropdown
+              trigger={
+                <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
+                  <ApperIcon name="Settings" size={16} className="mr-2" />
+                  Bulk Actions
+                  <ApperIcon name="ChevronDown" size={16} className="ml-2" />
+                </Button>
+              }
+            >
+              {bulkActions.map((action) => (
+                <Dropdown.Item
+                  key={action.value}
+                  onClick={() => handleBulkAction(action.value)}
+                  className={action.danger ? "text-red-600 hover:bg-red-50" : ""}
+                >
+                  <ApperIcon name={action.icon} size={16} />
+                  {action.label}
                 </Dropdown.Item>
-                <Dropdown.Item>
-                  <ApperIcon name="Share" size={16} />
-                  Share
-                </Dropdown.Item>
-              </Dropdown>
-            </div>
+              ))}
+            </Dropdown>
           </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setSelectedContacts([])}
+            className="text-white hover:bg-white/10"
+          >
+            <ApperIcon name="X" size={16} />
+          </Button>
+        </div>
+      )}
 
-          {/* Toolbar */}
-          <div className="flex flex-wrap items-center justify-between gap-4">
+      <div className="bg-white rounded-lg border border-slate-200">
+        <div className="p-6 border-b border-slate-200">
+          <div className="flex flex-col sm:flex-row gap-4">
+            <SearchBar
+              value={searchQuery}
+              onChange={setSearchQuery}
+              placeholder="Search contacts by name, email, company, or phone..."
+              className="flex-1"
+            />
             <div className="flex items-center gap-3">
-              {/* View Toggle */}
               <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-lg">
                 <button
                   onClick={() => setViewMode("table")}
@@ -439,84 +322,24 @@ contact.name.toLowerCase().includes(query) ||
                   <ApperIcon name="Grid" size={18} />
                 </button>
               </div>
-
-              <Button variant="ghost" size="sm" className="border border-slate-300">
-                <ApperIcon name="Columns" size={16} className="mr-2" />
-                Edit columns
-              </Button>
-            </div>
-
-            <div className="flex items-center gap-3">
-              <Button variant="ghost" size="sm" className="border border-slate-300">
-                <ApperIcon name="ArrowUpDown" size={16} className="mr-2" />
-                Sort
-              </Button>
-              <Button variant="ghost" size="sm" className="border border-slate-300">
-                <ApperIcon name="Download" size={16} className="mr-2" />
-                Export
-              </Button>
-              <Button variant="secondary" size="sm">
-                <ApperIcon name="Save" size={16} className="mr-2" />
-                Save view
-              </Button>
             </div>
           </div>
         </div>
 
-        {/* Tabs */}
+        <div className="px-6 py-4 border-b border-slate-200">
+          <FilterBar
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            onClearFilters={handleClearFilters}
+          />
+        </div>
+
         <TabGroup
           tabs={tabs}
           activeTab={activeTab}
           onChange={setActiveTab}
         />
-      </div>
 
-      {/* Filters and Search */}
-      <div className="bg-white border-b border-slate-200 px-6 py-4 space-y-4">
-        <SearchBar
-          value={searchQuery}
-          onChange={setSearchQuery}
-          placeholder="Search contacts by name, email, company, or phone..."
-          className="max-w-md"
-        />
-
-        <FilterBar
-          filters={filters}
-          onFilterChange={handleFilterChange}
-          onClearFilters={handleClearFilters}
-        />
-      </div>
-
-      {/* Bulk Actions */}
-      {selectedContacts.length > 0 && (
-        <div className="bg-gradient-to-r from-primary to-primary-light text-white px-6 py-3 flex items-center justify-between">
-          <span className="font-medium">
-            {selectedContacts.length} contact(s) selected
-          </span>
-          <div className="flex items-center gap-2">
-            <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
-              <ApperIcon name="Mail" size={16} className="mr-2" />
-              Email
-            </Button>
-            <Button variant="ghost" size="sm" className="text-white border-white/50 hover:bg-white/10">
-              <ApperIcon name="Download" size={16} className="mr-2" />
-              Export
-            </Button>
-            <Button 
-              variant="ghost" 
-              size="sm" 
-              className="text-white border-white/50 hover:bg-white/10"
-              onClick={handleBulkDelete}
-            >
-              <ApperIcon name="Trash2" size={16} className="mr-2" />
-              Delete
-            </Button>
-          </div>
-        </div>
-      )}
-
-      {/* Table */}
-      <div className="bg-white">
         {paginatedContacts.length === 0 ? (
           <Empty
             title="No contacts found"
@@ -526,28 +349,72 @@ contact.name.toLowerCase().includes(query) ||
             onAction={handleClearFilters}
           />
         ) : (
-          <>
-            <ContactsTable
-              contacts={paginatedContacts}
-              selectedContacts={selectedContacts}
-              onSelectContact={handleSelectContact}
-              onSelectAll={handleSelectAll}
-            />
-
-            <Pagination
-              currentPage={currentPage}
-              totalPages={totalPages}
-              perPage={perPage}
-              totalItems={filteredContacts.length}
-              onPageChange={setCurrentPage}
-              onPerPageChange={(value) => {
-                setPerPage(value);
-                setCurrentPage(1);
-              }}
-            />
-          </>
+          <ContactsTable
+            contacts={paginatedContacts}
+            selectedContacts={selectedContacts}
+            onSelectContact={handleSelectContact}
+            onSelectAll={handleSelectAll}
+          />
         )}
+
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          perPage={perPage}
+          totalItems={filteredContacts.length}
+          onPageChange={setCurrentPage}
+          onPerPageChange={(value) => {
+            setPerPage(value);
+            setCurrentPage(1);
+          }}
+        />
       </div>
+
+      {showImportModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 w-full max-w-md mx-4">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-semibold text-slate-900">Import Contacts</h3>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => setShowImportModal(false)}
+              >
+                <ApperIcon name="X" size={16} />
+              </Button>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="border-2 border-dashed border-slate-300 rounded-lg p-8 text-center">
+                <ApperIcon name="Upload" className="w-12 h-12 text-slate-400 mx-auto mb-3" />
+                <p className="text-sm text-slate-600 mb-2">
+                  Drop your CSV file here or click to browse
+                </p>
+                <Button variant="secondary" size="sm">
+                  Choose File
+                </Button>
+              </div>
+              
+              <div className="text-xs text-slate-500">
+                <p className="font-medium mb-1">Supported fields:</p>
+                <p>Name, Email, Phone, Company, Lead Status, Topics</p>
+              </div>
+              
+              <div className="flex justify-end gap-2">
+                <Button
+                  variant="ghost"
+                  onClick={() => setShowImportModal(false)}
+                >
+                  Cancel
+                </Button>
+                <Button>
+                  Import Contacts
+                </Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

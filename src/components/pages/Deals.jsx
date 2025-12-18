@@ -2,7 +2,7 @@ import ApperIcon from "@/components/ApperIcon";
 
 const Deals = () => {
   return (
-<div className="min-h-screen flex items-center justify-center p-8">
+<div className="flex items-center justify-center py-16">
       <div className="text-center space-y-6 max-w-md">
         <div className="w-20 h-20 bg-gradient-to-br from-secondary to-secondary-light rounded-full flex items-center justify-center mx-auto shadow-lg">
           <ApperIcon name="TrendingUp" className="w-10 h-10 text-white" />

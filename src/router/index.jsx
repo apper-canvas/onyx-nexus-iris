@@ -11,7 +11,7 @@ const Settings = lazy(() => import("@/components/pages/Settings"));
 const NotFound = lazy(() => import("@/components/pages/NotFound"));
 
 const LoadingFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-slate-50">
+  <div className="flex items-center justify-center py-16">
     <div className="text-center space-y-4">
       <div className="relative w-16 h-16 mx-auto">
         <div className="absolute inset-0 border-4 border-primary/20 rounded-full"></div>
@@ -25,7 +25,7 @@ const mainRoutes = [
   {
     index: true,
     path: "",
-    element: (
+element: (
       <Suspense fallback={<LoadingFallback />}>
         <Dashboard />
       </Suspense>
@@ -34,28 +34,28 @@ const mainRoutes = [
   {
     path: "contacts",
     element: (
-      <Suspense fallback={<LoadingFallback />}>
+<Suspense fallback={<LoadingFallback />}>
         <Contacts />
       </Suspense>
     )
   },
   {
     path: "companies",
-    element: (
+element: (
       <Suspense fallback={<LoadingFallback />}>
         <Companies />
       </Suspense>
     )
   },
   {
-    path: "deals",
+path: "deals",
     element: (
       <Suspense fallback={<LoadingFallback />}>
         <Deals />
       </Suspense>
     )
   },
-  {
+{
     path: "reports",
     element: (
       <Suspense fallback={<LoadingFallback />}>
@@ -63,7 +63,7 @@ const mainRoutes = [
       </Suspense>
     )
   },
-  {
+{
     path: "settings",
     element: (
       <Suspense fallback={<LoadingFallback />}>
@@ -73,7 +73,7 @@ const mainRoutes = [
   },
   {
     path: "*",
-    element: (
+element: (
       <Suspense fallback={<LoadingFallback />}>
         <NotFound />
       </Suspense>
