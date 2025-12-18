@@ -30,8 +30,8 @@ const Layout = () => {
           </div>
         </header>
 
-<main className="min-h-screen p-4 sm:p-6 lg:p-8 overflow-x-auto">
-          <div className="w-full max-w-full">
+<main className="min-h-screen p-4 sm:p-6 lg:p-6 overflow-x-auto">
+          <div className="w-full max-w-7xl mx-auto">
             <Outlet />
           </div>
         </main>
