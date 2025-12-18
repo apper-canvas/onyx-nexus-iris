@@ -29,7 +29,7 @@ return (
           </div>
         </header>
 
-        <main className="flex-1 bg-slate-50 p-6 overflow-auto lg:pl-66">
+<main className="flex-1 bg-slate-50 p-6 overflow-auto">
           <div className="w-full max-w-7xl mx-auto">
             <Outlet />
           </div>

@@ -6,18 +6,18 @@ export default {
   ],
   theme: {
     extend: {
-      colors: {
+colors: {
         primary: {
-          DEFAULT: "#1e3a8a",
-          light: "#3b5ab8",
-          dark: "#0f1f4f"
+          DEFAULT: "#1e293b",
+          light: "#334155",
+          dark: "#0f172a"
         },
         secondary: {
-          DEFAULT: "#0891b2",
-          light: "#06b6d4",
-          dark: "#0e7490"
+          DEFAULT: "#0d9488",
+          light: "#14b8a6",
+          dark: "#0f766e"
         },
-        accent: "#06b6d4"
+        accent: "#5eead4"
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"]
