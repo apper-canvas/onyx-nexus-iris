@@ -251,8 +251,8 @@ contact.name.toLowerCase().includes(query) ||
         </div>
       </div>
 
-      {selectedContacts.length > 0 && (
-<div className="bg-primary text-white px-6 py-3 rounded-lg flex items-center justify-between">
+{selectedContacts.length > 0 && (
+        <div className="bg-orange-500 text-white px-6 py-3 rounded-lg flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium">
               {selectedContacts.length} contact{selectedContacts.length !== 1 ? 's' : ''} selected
@@ -290,8 +290,8 @@ contact.name.toLowerCase().includes(query) ||
         </div>
       )}
 
-      <div className="bg-white rounded-lg border border-slate-200">
-        <div className="p-6 border-b border-slate-200">
+<div className="bg-white rounded-lg border border-slate-200 shadow-sm">
+        <div className="p-6 border-b border-slate-100">
           <div className="flex flex-col sm:flex-row gap-4">
             <SearchBar
               value={searchQuery}
@@ -300,12 +300,12 @@ contact.name.toLowerCase().includes(query) ||
               className="flex-1"
             />
             <div className="flex items-center gap-3">
-              <div className="flex items-center gap-1 p-1 bg-slate-100 rounded-lg">
+              <div className="flex items-center gap-1 p-1 bg-slate-50 rounded-lg">
                 <button
                   onClick={() => setViewMode("table")}
                   className={`p-2 rounded transition-colors ${
                     viewMode === "table"
-? "bg-white text-primary shadow-sm"
+                      ? "bg-white text-orange-500 shadow-sm"
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
@@ -315,7 +315,7 @@ contact.name.toLowerCase().includes(query) ||
                   onClick={() => setViewMode("grid")}
                   className={`p-2 rounded transition-colors ${
                     viewMode === "grid"
-? "bg-white text-primary shadow-sm"
+                      ? "bg-white text-orange-500 shadow-sm"
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
@@ -326,7 +326,7 @@ contact.name.toLowerCase().includes(query) ||
           </div>
         </div>
 
-        <div className="px-6 py-4 border-b border-slate-200">
+<div className="px-6 py-4 border-b border-slate-100">
           <FilterBar
             filters={filters}
             onFilterChange={handleFilterChange}

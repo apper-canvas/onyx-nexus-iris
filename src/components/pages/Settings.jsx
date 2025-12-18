@@ -85,10 +85,10 @@ const Settings = () => {
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
               className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
+className={`flex items-center gap-2 px-4 py-3 text-sm font-medium border-b-2 transition-colors ${
                 activeTab === tab.id
-? "border-primary text-primary"
+                  ? "border-orange-500 text-orange-500"
                   : "border-transparent text-slate-500 hover:text-slate-700 hover:border-slate-300"
-              }`}
             >
               <ApperIcon name={tab.icon} size={16} />
               {tab.label}
@@ -111,7 +111,7 @@ const Settings = () => {
                   <select
                     value={settings.system.timezone}
                     onChange={(e) => handleInputChange("system", "timezone", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   >
                     {timezones.map((tz) => (
                       <option key={tz} value={tz}>{tz}</option>
@@ -126,7 +126,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                   <select
                     value={settings.system.currency}
                     onChange={(e) => handleInputChange("system", "currency", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   >
                     {currencies.map((currency) => (
                       <option key={currency.code} value={currency.code}>
@@ -143,7 +143,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                   <select
                     value={settings.system.dateFormat}
                     onChange={(e) => handleInputChange("system", "dateFormat", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   >
                     <option value="MM/DD/YYYY">MM/DD/YYYY</option>
                     <option value="DD/MM/YYYY">DD/MM/YYYY</option>
@@ -158,7 +158,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                   <select
                     value={settings.system.timeFormat}
                     onChange={(e) => handleInputChange("system", "timeFormat", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   >
                     <option value="12-hour">12-hour</option>
                     <option value="24-hour">24-hour</option>
@@ -183,7 +183,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                     type="text"
                     value={settings.company.name}
                     onChange={(e) => handleInputChange("company", "name", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   />
                 </div>
 
@@ -195,7 +195,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                     type="email"
                     value={settings.company.email}
                     onChange={(e) => handleInputChange("company", "email", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   />
                 </div>
 
@@ -207,7 +207,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                     type="text"
                     value={settings.company.phone}
                     onChange={(e) => handleInputChange("company", "phone", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   />
                 </div>
 
@@ -219,7 +219,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                     type="text"
                     value={settings.company.address}
                     onChange={(e) => handleInputChange("company", "address", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   />
                 </div>
 
@@ -231,7 +231,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                     type="text"
                     value={settings.company.city}
                     onChange={(e) => handleInputChange("company", "city", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   />
                 </div>
 
@@ -243,7 +243,7 @@ className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focu
                     type="url"
                     value={settings.company.website}
                     onChange={(e) => handleInputChange("company", "website", e.target.value)}
-className="w-full px-3 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+className="w-full px-3 py-2 border border-slate-200 rounded-md focus:ring-1 focus:ring-orange-500 focus:border-orange-500"
                   />
                 </div>
               </div>

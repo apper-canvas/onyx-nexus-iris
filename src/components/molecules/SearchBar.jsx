@@ -7,7 +7,7 @@ const SearchBar = ({ value, onChange, placeholder = "Search...", className }) =>
 
   return (
     <div className={className}>
-      <div className={`relative transition-all duration-200 ${focused ? "ring-2 ring-primary/50" : ""} rounded-lg`}>
+<div className={`relative transition-all duration-200 ${focused ? "ring-2 ring-orange-500/50" : ""} rounded-lg`}>
         <ApperIcon 
           name="Search" 
           className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"

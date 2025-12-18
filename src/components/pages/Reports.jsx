@@ -106,15 +106,15 @@ return (
         ))}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {reportTemplates.map(template => (
           <div
             key={template.id}
-            className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-lg transition-all duration-200 group"
+            className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-all duration-200 group"
           >
             <div className="flex items-start justify-between mb-4">
               <div
-                className={`w-12 h-12 bg-gradient-to-br ${template.color} rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform`}
+                className={`w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center`}
               >
                 <ApperIcon name={template.icon} className="w-6 h-6 text-white" />
               </div>
@@ -127,7 +127,7 @@ return (
 
             <div className="space-y-3">
               <div>
-                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-primary transition-colors">
+                <h3 className="text-lg font-semibold text-slate-900 group-hover:text-orange-600 transition-colors">
                   {template.name}
                 </h3>
                 <p className="text-sm text-slate-600 mt-1 leading-relaxed">
@@ -151,9 +151,8 @@ return (
               </Button>
               <Button
                 onClick={() => handleExportReport(template)}
-                variant="ghost"
+                variant="secondary"
                 size="sm"
-                className="border border-slate-300"
               >
                 <ApperIcon name="Download" size={14} />
               </Button>
@@ -163,8 +162,8 @@ return (
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-        <div className="bg-white rounded-lg border border-slate-200 p-4 text-center">
-          <div className="text-2xl font-bold text-primary">24</div>
+<div className="bg-white rounded-lg border border-slate-200 p-4 text-center">
+          <div className="text-2xl font-bold text-orange-500">24</div>
           <div className="text-sm text-slate-600">Reports Generated</div>
         </div>
         <div className="bg-white rounded-lg border border-slate-200 p-4 text-center">

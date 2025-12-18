@@ -119,15 +119,15 @@ const Dashboard = () => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {metrics.map((metric) => (
           <div
             key={metric.label}
             onClick={() => handleMetricClick(metric)}
-            className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-lg transition-all duration-200 cursor-pointer group"
+            className="bg-white rounded-lg border border-slate-200 p-6 hover:shadow-md transition-all duration-200 cursor-pointer group"
           >
             <div className="flex items-center justify-between mb-4">
-<div className="w-12 h-12 bg-gradient-to-br from-primary to-primary-light rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+              <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
                 <ApperIcon name={metric.icon} className="w-6 h-6 text-white" />
               </div>
               <span className={`text-sm font-medium flex items-center gap-1 ${
@@ -150,14 +150,14 @@ const Dashboard = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-2 space-y-6">
-          <div className="bg-white rounded-lg border border-slate-200 p-6">
+<div className="bg-white rounded-lg border border-slate-200 p-6">
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-lg font-semibold text-slate-900">Sales Performance</h3>
               <Button variant="ghost" size="sm">
                 <ApperIcon name="MoreHorizontal" size={16} />
               </Button>
             </div>
-            <div className="bg-slate-50 rounded-lg p-8 text-center">
+            <div className="bg-slate-50/50 rounded-lg p-8 text-center">
               <ApperIcon name="BarChart3" className="w-12 h-12 text-slate-400 mx-auto mb-3" />
               <p className="text-sm text-slate-500">Interactive charts coming soon</p>
             </div>
@@ -170,7 +170,7 @@ const Dashboard = () => {
                 <ApperIcon name="MoreHorizontal" size={16} />
               </Button>
             </div>
-            <div className="bg-slate-50 rounded-lg p-8 text-center">
+            <div className="bg-slate-50/50 rounded-lg p-8 text-center">
               <ApperIcon name="PieChart" className="w-12 h-12 text-slate-400 mx-auto mb-3" />
               <p className="text-sm text-slate-500">Pipeline visualization in development</p>
             </div>
@@ -196,7 +196,7 @@ const Dashboard = () => {
                   <ApperIcon name={activity.icon} size={14} />
                 </div>
                 <div className="flex-1 min-w-0">
-<p className="text-sm font-medium text-slate-900 group-hover:text-primary transition-colors">
+<p className="text-sm font-medium text-slate-900 group-hover:text-orange-600 transition-colors">
                     {activity.title}
                   </p>
                   <p className="text-xs text-slate-500 mt-1">

@@ -8,7 +8,7 @@ const NotFound = () => {
   return (
 <div className="flex items-center justify-center py-16">
       <div className="text-center space-y-6 max-w-md">
-        <div className="w-24 h-24 bg-gradient-to-br from-primary to-primary-light rounded-full flex items-center justify-center mx-auto shadow-lg">
+<div className="w-24 h-24 bg-orange-500 rounded-full flex items-center justify-center mx-auto shadow-lg">
           <ApperIcon name="AlertCircle" className="w-12 h-12 text-white" />
         </div>
         <div className="space-y-2">

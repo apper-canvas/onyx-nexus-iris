@@ -19,7 +19,7 @@ const Pagination = ({
   const endItem = Math.min(currentPage * perPage, totalItems);
 
   return (
-    <div className="flex items-center justify-between px-6 py-4 bg-white border-t border-slate-200">
+<div className="flex items-center justify-between px-6 py-4 bg-white border-t border-slate-100">
       <div className="flex items-center gap-4">
         <span className="text-sm text-slate-600">
           Showing {startItem}-{endItem} of {totalItems} contacts
@@ -27,7 +27,7 @@ const Pagination = ({
         <select
           value={perPage}
           onChange={(e) => onPerPageChange(Number(e.target.value))}
-className="px-3 py-1.5 text-sm border border-slate-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/50"
+          className="px-3 py-1.5 text-sm border border-slate-200 rounded-md focus:outline-none focus:ring-1 focus:ring-orange-500"
         >
           <option value={10}>10 per page</option>
           <option value={25}>25 per page</option>
@@ -56,9 +56,9 @@ className="px-3 py-1.5 text-sm border border-slate-300 rounded-lg focus:outline-
             onClick={() => onPageChange(page)}
             className={cn(
               "px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-200",
-              page === currentPage
-? "bg-gradient-to-r from-primary to-primary-light text-white shadow-md"
-                : "text-slate-600 hover:bg-slate-100"
+page === currentPage
+                ? "bg-orange-500 text-white"
+                : "text-slate-600 hover:bg-slate-50"
             )}
           >
             {page}

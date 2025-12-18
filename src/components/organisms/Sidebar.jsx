@@ -24,35 +24,35 @@ const Sidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar - Mobile (Transform Overlay) */}
 <aside className={cn(
-        "fixed top-0 left-0 h-full w-60 bg-gradient-to-b from-orange-800 to-orange-900 z-50",
+        "fixed top-0 left-0 h-full w-60 bg-white border-r border-slate-200 z-50",
         "transform transition-transform duration-300 ease-in-out lg:hidden",
         isOpen ? "translate-x-0" : "-translate-x-full"
       )}>
-        <div className="p-6 border-b border-white/10">
+<div className="p-6 border-b border-slate-200">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
                 <ApperIcon name="Network" className="w-6 h-6 text-white" />
               </div>
-              <h1 className="text-xl font-bold text-white">Nexus CRM</h1>
+              <h1 className="text-xl font-bold text-slate-900">HubSpot</h1>
             </div>
-            <button onClick={onClose} className="lg:hidden text-white/80 hover:text-white">
+            <button onClick={onClose} className="lg:hidden text-slate-400 hover:text-slate-600">
               <ApperIcon name="X" size={24} />
             </button>
           </div>
         </div>
 
-        <nav className="p-4 space-y-1">
+<nav className="p-4 space-y-1">
           {navItems.map((item) => (
             <NavLink
               key={item.path}
               to={`/${item.path}`}
-onClick={onClose}
+              onClick={onClose}
               className={({ isActive }) => cn(
-                "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200",
-isActive 
-                  ? "bg-orange-600/20 text-orange-300 border-l-4 border-accent" 
-                  : "text-slate-300 hover:bg-slate-700/50 hover:text-white border-l-4 border-transparent"
+                "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200",
+                isActive 
+                  ? "bg-orange-50 text-orange-600 font-medium" 
+                  : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
               )}
             >
               <ApperIcon name={item.icon} size={20} />
@@ -63,13 +63,13 @@ isActive
       </aside>
 
 {/* Sidebar - Desktop (Fixed) */}
-<aside className="hidden lg:block fixed top-0 left-0 w-60 bg-gradient-to-b from-orange-800 to-orange-900 min-h-screen z-40">
-        <div className="p-6 border-b border-white/10">
+      <aside className="hidden lg:block fixed top-0 left-0 w-60 bg-white border-r border-slate-200 min-h-screen z-40">
+        <div className="p-6 border-b border-slate-200">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center">
+            <div className="w-10 h-10 bg-orange-500 rounded-lg flex items-center justify-center">
               <ApperIcon name="Network" className="w-6 h-6 text-white" />
             </div>
-            <h1 className="text-xl font-bold text-white">Nexus CRM</h1>
+            <h1 className="text-xl font-bold text-slate-900">HubSpot</h1>
           </div>
         </div>
 
@@ -78,11 +78,11 @@ isActive
             <NavLink
               key={item.path}
               to={`/${item.path}`}
-className={({ isActive }) => cn(
-                "flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200",
-isActive 
-                  ? "bg-orange-600/20 text-orange-300 border-l-4 border-accent" 
-                  : "text-slate-300 hover:bg-slate-700/50 hover:text-white border-l-4 border-transparent"
+              className={({ isActive }) => cn(
+                "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200",
+                isActive 
+                  ? "bg-orange-50 text-orange-600 font-medium" 
+                  : "text-slate-700 hover:bg-slate-100 hover:text-slate-900"
               )}
             >
               <ApperIcon name={item.icon} size={20} />

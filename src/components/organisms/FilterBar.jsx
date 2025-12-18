@@ -21,7 +21,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
         {/* Owner Filter */}
         <Dropdown
           trigger={
-            <Button variant="ghost" size="sm" className="border border-slate-300">
+<Button variant="ghost" size="sm" className="border border-slate-200 bg-white">
               <ApperIcon name="User" size={16} className="mr-2" />
               Owner: {filters.owner || "All"}
               <ApperIcon name="ChevronDown" size={16} className="ml-2" />
@@ -44,7 +44,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
         {/* Lead Status Filter */}
         <Dropdown
           trigger={
-            <Button variant="ghost" size="sm" className="border border-slate-300">
+<Button variant="ghost" size="sm" className="border border-slate-200 bg-white">
               <ApperIcon name="Target" size={16} className="mr-2" />
               Status{filters.leadStatus.length > 0 && `: ${filters.leadStatus.length}`}
               <ApperIcon name="ChevronDown" size={16} className="ml-2" />
@@ -73,7 +73,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
         </Dropdown>
 
         {/* More Filters Button */}
-        <Button variant="ghost" size="sm" className="border border-slate-300">
+<Button variant="ghost" size="sm" className="border border-slate-200 bg-white">
           <ApperIcon name="SlidersHorizontal" size={16} className="mr-2" />
           More
           <ApperIcon name="ChevronDown" size={16} className="ml-2" />
@@ -97,22 +97,22 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
       {(filters.owner || filters.leadStatus.length > 0) && (
         <div className="flex flex-wrap items-center gap-2">
           {filters.owner && (
-<Badge variant="primary" className="text-xs px-3 py-1">
+<Badge variant="secondary" className="text-xs px-3 py-1 bg-orange-50 text-orange-700">
               Owner: {filters.owner}
               <button
                 onClick={() => onFilterChange("owner", "")}
-className="ml-2 hover:text-primary-dark"
+                className="ml-2 hover:text-orange-800"
               >
                 <ApperIcon name="X" size={12} />
               </button>
             </Badge>
           )}
           {filters.leadStatus.map((status) => (
-<Badge key={status} variant="primary" className="text-xs px-3 py-1">
+<Badge key={status} variant="secondary" className="text-xs px-3 py-1 bg-orange-50 text-orange-700">
               Status: {status}
               <button
                 onClick={() => onFilterChange("leadStatus", filters.leadStatus.filter(s => s !== status))}
-className="ml-2 hover:text-primary-dark"
+                className="ml-2 hover:text-orange-800"
               >
                 <ApperIcon name="X" size={12} />
               </button>

@@ -2,12 +2,13 @@ import { cn } from "@/utils/cn";
 
 const Badge = ({ children, variant = "default", className }) => {
 const variants = {
-    default: "bg-orange-100 text-orange-700",
-    success: "bg-green-100 text-green-700",
-    warning: "bg-orange-100 text-orange-700",
-    danger: "bg-red-100 text-red-700",
-    info: "bg-blue-100 text-blue-700",
-    primary: "bg-primary/10 text-primary"
+    default: "bg-slate-100 text-slate-700",
+    success: "bg-green-50 text-green-700",
+    warning: "bg-yellow-50 text-yellow-700",
+    danger: "bg-red-50 text-red-700",
+    info: "bg-blue-50 text-blue-700",
+    primary: "bg-orange-50 text-orange-700",
+    secondary: "bg-orange-50 text-orange-700"
   };
 
   return (
