@@ -3,7 +3,7 @@ import ApperIcon from "@/components/ApperIcon";
 import { cn } from "@/utils/cn";
 
 const Sidebar = ({ isOpen, onClose }) => {
-  const navItems = [
+const navItems = [
     { path: "", icon: "LayoutDashboard", label: "Dashboard" },
     { path: "contacts", icon: "Users", label: "Contacts" },
     { path: "companies", icon: "Building2", label: "Companies" },
@@ -48,14 +48,14 @@ const Sidebar = ({ isOpen, onClose }) => {
               to={`/${item.path}`}
               onClick={onClose}
               className={({ isActive }) => cn(
-                "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200",
+                "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium",
                 isActive 
-                  ? "bg-purple-800 text-white font-medium" 
-                  : "text-purple-100 hover:bg-purple-800 hover:text-white"
+                  ? "bg-primary text-white shadow-lg" 
+                  : "text-slate-300 hover:bg-slate-700 hover:text-white"
               )}
             >
-              <ApperIcon name={item.icon} size={20} />
-              <span className="font-medium">{item.label}</span>
+              <ApperIcon name={item.icon} size={18} />
+              <span>{item.label}</span>
             </NavLink>
           ))}
         </nav>
@@ -78,14 +78,14 @@ const Sidebar = ({ isOpen, onClose }) => {
               key={item.path}
               to={`/${item.path}`}
               className={({ isActive }) => cn(
-                "flex items-center gap-3 px-3 py-2 rounded-md transition-all duration-200",
+                "flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-200 text-sm font-medium",
                 isActive 
-                  ? "bg-purple-800 text-white font-medium" 
-                  : "text-purple-100 hover:bg-purple-800 hover:text-white"
+                  ? "bg-primary text-white shadow-lg" 
+                  : "text-slate-300 hover:bg-slate-700 hover:text-white"
               )}
             >
-              <ApperIcon name={item.icon} size={20} />
-              <span className="font-medium">{item.label}</span>
+              <ApperIcon name={item.icon} size={18} />
+              <span>{item.label}</span>
             </NavLink>
           ))}
         </nav>
