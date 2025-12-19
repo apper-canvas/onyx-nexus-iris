@@ -12,7 +12,7 @@ const Button = forwardRef(({
   const baseStyles = "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed";
   
 const variants = {
-    primary: "bg-orange-500 text-white hover:bg-orange-600 shadow-sm",
+    primary: "bg-purple-600 text-white hover:bg-purple-700 shadow-sm",
     secondary: "border border-slate-300 bg-white text-slate-700 hover:bg-slate-50",
     ghost: "text-slate-700 hover:bg-slate-100 active:bg-slate-200",
     danger: "bg-red-500 text-white hover:bg-red-600"

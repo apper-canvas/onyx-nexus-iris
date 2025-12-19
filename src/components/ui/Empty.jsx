@@ -19,8 +19,8 @@ const Empty = ({
         </div>
         {actionLabel && onAction && (
           <button
-            onClick={onAction}
-className="px-6 py-3 bg-orange-500 text-white rounded-lg font-medium hover:bg-orange-600 transition-colors"
+onClick={onAction}
+className="px-6 py-3 bg-purple-600 text-white rounded-lg font-medium hover:bg-purple-700 transition-colors"
           >
             {actionLabel}
           </button>

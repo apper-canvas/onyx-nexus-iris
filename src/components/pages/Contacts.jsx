@@ -252,7 +252,7 @@ contact.name.toLowerCase().includes(query) ||
       </div>
 
 {selectedContacts.length > 0 && (
-        <div className="bg-orange-500 text-white px-6 py-3 rounded-lg flex items-center justify-between">
+        <div className="bg-purple-600 text-white px-6 py-3 rounded-lg flex items-center justify-between">
           <div className="flex items-center gap-3">
             <span className="text-sm font-medium">
               {selectedContacts.length} contact{selectedContacts.length !== 1 ? 's' : ''} selected
@@ -301,11 +301,11 @@ contact.name.toLowerCase().includes(query) ||
             />
             <div className="flex items-center gap-3">
               <div className="flex items-center gap-1 p-1 bg-slate-50 rounded-lg">
-                <button
+<button
                   onClick={() => setViewMode("table")}
                   className={`p-2 rounded transition-colors ${
                     viewMode === "table"
-                      ? "bg-white text-orange-500 shadow-sm"
+                      ? "bg-white text-purple-600 shadow-sm"
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >
@@ -315,7 +315,7 @@ contact.name.toLowerCase().includes(query) ||
                   onClick={() => setViewMode("grid")}
                   className={`p-2 rounded transition-colors ${
                     viewMode === "grid"
-                      ? "bg-white text-orange-500 shadow-sm"
+                      ? "bg-white text-purple-600 shadow-sm"
                       : "text-slate-600 hover:text-slate-900"
                   }`}
                 >

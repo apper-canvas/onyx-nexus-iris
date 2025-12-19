@@ -7,8 +7,8 @@ const variants = {
     warning: "bg-yellow-50 text-yellow-700",
     danger: "bg-red-50 text-red-700",
     info: "bg-blue-50 text-blue-700",
-    primary: "bg-orange-50 text-orange-700",
-    secondary: "bg-orange-50 text-orange-700"
+    primary: "bg-purple-50 text-purple-700",
+    secondary: "bg-purple-50 text-purple-700"
   };
 
   return (

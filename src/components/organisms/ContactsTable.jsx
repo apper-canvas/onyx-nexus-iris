@@ -55,7 +55,7 @@ const ContactsTable = ({ contacts, selectedContacts, onSelectContact, onSelectAl
   return (
     <div className="overflow-x-auto">
       <table className="w-full">
-<thead className="bg-slate-50/50 border-y border-slate-100">
+<thead className="bg-purple-50/50 border-y border-purple-100">
           <tr>
             <th className="w-12 px-4 py-3">
               <input
@@ -107,7 +107,7 @@ const ContactsTable = ({ contacts, selectedContacts, onSelectContact, onSelectAl
             <th className="w-12 px-4 py-3"></th>
           </tr>
         </thead>
-<tbody className="bg-white divide-y divide-slate-100">
+<tbody className="bg-white divide-y divide-purple-100">
           {sortedContacts.map((contact) => (
             <tr 
               key={contact.Id}

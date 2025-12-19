@@ -21,7 +21,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
         {/* Owner Filter */}
         <Dropdown
           trigger={
-<Button variant="ghost" size="sm" className="border border-slate-200 bg-white">
+<Button variant="ghost" size="sm" className="border border-purple-200 bg-white">
               <ApperIcon name="User" size={16} className="mr-2" />
               Owner: {filters.owner || "All"}
               <ApperIcon name="ChevronDown" size={16} className="ml-2" />
@@ -44,7 +44,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
         {/* Lead Status Filter */}
         <Dropdown
           trigger={
-<Button variant="ghost" size="sm" className="border border-slate-200 bg-white">
+<Button variant="ghost" size="sm" className="border border-purple-200 bg-white">
               <ApperIcon name="Target" size={16} className="mr-2" />
               Status{filters.leadStatus.length > 0 && `: ${filters.leadStatus.length}`}
               <ApperIcon name="ChevronDown" size={16} className="ml-2" />
@@ -73,7 +73,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
         </Dropdown>
 
         {/* More Filters Button */}
-<Button variant="ghost" size="sm" className="border border-slate-200 bg-white">
+<Button variant="ghost" size="sm" className="border border-purple-200 bg-white">
           <ApperIcon name="SlidersHorizontal" size={16} className="mr-2" />
           More
           <ApperIcon name="ChevronDown" size={16} className="ml-2" />
@@ -97,7 +97,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
       {(filters.owner || filters.leadStatus.length > 0) && (
         <div className="flex flex-wrap items-center gap-2">
           {filters.owner && (
-<Badge variant="secondary" className="text-xs px-3 py-1 bg-orange-50 text-orange-700">
+<Badge variant="secondary" className="text-xs px-3 py-1 bg-purple-50 text-purple-700">
               Owner: {filters.owner}
               <button
                 onClick={() => onFilterChange("owner", "")}
@@ -108,7 +108,7 @@ const FilterBar = ({ filters, onFilterChange, onClearFilters }) => {
             </Badge>
           )}
           {filters.leadStatus.map((status) => (
-<Badge key={status} variant="secondary" className="text-xs px-3 py-1 bg-orange-50 text-orange-700">
+<Badge key={status} variant="secondary" className="text-xs px-3 py-1 bg-purple-50 text-purple-700">
               Status: {status}
               <button
                 onClick={() => onFilterChange("leadStatus", filters.leadStatus.filter(s => s !== status))}
